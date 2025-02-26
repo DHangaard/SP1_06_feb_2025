@@ -16,9 +16,6 @@ void setup() {
   size(500, 150);
   background(0);
 
-  // Set alpha to 100 for easier adjusting
-  colorMode(RGB, 255, 255, 255, 255);
-
   noStroke();
   fill(255);
   rect(x, y, w, h);
