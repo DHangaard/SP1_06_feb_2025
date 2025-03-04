@@ -3,7 +3,7 @@ class Team {
   // Attributes
   float x;
   float y;
-  
+
   float offset;
   float textOffset;
   float shadowOffset;
@@ -52,6 +52,14 @@ class Team {
 
   // Create team flag and name
   void teamInfo(float x, float y, int teamName, int teamFlag) {
+
+    float flagWidth = boxWidth * .175;
+    float flagHeight = boxHeight + 1;
+    
+    float textX = x + (boxWidth * .175);
+    float textY = y + (boxHeight / 2);
+    
+    float teamNameSize = height * .07;
   }
 
   /*

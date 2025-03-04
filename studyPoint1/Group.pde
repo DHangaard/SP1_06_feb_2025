@@ -8,7 +8,7 @@ class Group {
 
   float groupNameX;
   float groupNameY;
-  float textSize_; // Find better variable name
+  float groupNameSize;
 
   // for use in parameters - change comment to something more appropriate
   char groupName;
@@ -27,14 +27,14 @@ class Group {
     this.groupColor = groupColor;
 
     offset = height * .1;
-    textSize_ = height * .04;
+    groupNameSize = height * .04;
 
     groupNameX = x + (width * .225);
     groupNameY = y - (height * .04);
 
     // Display groupName
     textAlign(CENTER, CENTER);
-    textSize(textSize_);
+    textSize(groupNameSize);
     fill(groupColor);
     text("GROUP " + groupName, groupNameX, groupNameY);
   }
