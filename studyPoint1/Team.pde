@@ -15,6 +15,9 @@ class Team {
   int black;
   int grey;
 
+  String[] teamNameList;
+  PImage[] teamFlagList;
+  
   // Constructor
   Team(float x, float y) { // Maybe no parameters here?
 
@@ -55,12 +58,76 @@ class Team {
 
     float flagWidth = boxWidth * .175;
     float flagHeight = boxHeight + 1;
-    
+
     float textX = x + (boxWidth * .175);
     float textY = y + (boxHeight / 2);
-    
+
     float teamNameSize = height * .07;
+
+    // Array 
+    teamNameList = new String[16];
+    
+    // Group A
+    teamNameList[0] = "RUSSIA";
+    teamNameList[1] = "SAUDI ARABIA";
+    teamNameList[2] = "EGYPT";
+    teamNameList[3] = "URUGUAY";
+
+    // Group B
+    teamNameList[4] = "PROTUGAL";
+    teamNameList[5] = "SPAIN";
+    teamNameList[6] = "MOROCCO";
+    teamNameList[7] = "IRAN";
+
+    // Group C
+    teamNameList[8] = "FRANCE";
+    teamNameList[9] = "AUSTRALIA";
+    teamNameList[10] = "PERU";
+    teamNameList[11] = "DENMARK";
+
+    // Group D
+    teamNameList[12] = "ARGENTINA";
+    teamNameList[13] = "ICELAND";
+    teamNameList[14] = "CROATIA";
+    teamNameList[15] = "NIGERIA";
+
+    teamFlagList = new PImage[16];
+
+    // Group A
+    teamFlagList[0] = loadImage("russiaFlag.png");
+    teamFlagList[1] = loadImage("saudiArabiaFlag.png");
+    teamFlagList[2] = loadImage("egyptFlag.png");
+    teamFlagList[3] = loadImage("uruguayFlag.png");
+
+    // Group B
+    teamFlagList[4] = loadImage("portugalFlag.png");
+    teamFlagList[5] = loadImage("spainFlag.png");
+    teamFlagList[6] = loadImage("moroccoFlag.png");
+    teamFlagList[7] = loadImage("iranFlag.png");
+
+    // Group C
+    teamFlagList[8] = loadImage("franceFlag.png");
+    teamFlagList[9] = loadImage("australiaFlag.png");
+    teamFlagList[10] = loadImage("peruFlag.png");
+    teamFlagList[11] = loadImage("denmarkFlag.png");
+
+    // Group D
+    teamFlagList[12] = loadImage("argentinaFlag.png");
+    teamFlagList[13] = loadImage("icelandFlag.png");
+    teamFlagList[14] = loadImage("croatiaFlag.png");
+    teamFlagList[15] = loadImage("nigeriaFlag.png");
   }
+  
+  /*
+  for (int i = 255; i >= 0; i -= 5) {
+   strokeWeight(2);
+   strokeCap(SQUARE);
+   stroke(grey, i);
+   line(x+flagWidth, y, x+flagWidth, y+boxHeight);
+   x_ += 1;
+   grey++;
+   }
+   */
 
   /*
   // Create flag shadow
