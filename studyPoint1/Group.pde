@@ -10,13 +10,12 @@ class Group {
   float groupNameY;
   float groupNameSize;
 
-  // for use in parameters - change comment to something more appropriate
+  // for use in parameters
   char groupName;
   int groupColor;
 
   // Declare Team objects
-  // Maybe an array of teams?
-  // Team team;
+  Team[] teams;
 
 
   // Constructor
@@ -32,6 +31,8 @@ class Group {
     groupNameX = x + (width * .225);
     groupNameY = y - (height * .04);
 
+    teams = new Team[4];
+
     // Display groupName
     textAlign(CENTER, CENTER);
     textSize(groupNameSize);
@@ -41,5 +42,19 @@ class Group {
 
   // Methods
   void display(int team1, int team2, int team3, int team4) {
+    teams[0] = new Team(x, y);
+    teams[0].displayTeam(x, y, groupColor, team1);
+    y += offset;
+
+    teams[1] = new Team(x, y);
+    teams[1].displayTeam(x, y, groupColor, team2);
+    y += offset;
+
+    teams[2] = new Team(x, y);
+    teams[2].displayTeam(x, y, groupColor, team3);
+    y += offset;
+
+    teams[3] = new Team(x, y);
+    teams[3].displayTeam(x, y, groupColor, team4);
   }
 }

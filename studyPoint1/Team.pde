@@ -17,7 +17,7 @@ class Team {
 
   String[] teamNameList;
   PImage[] teamFlagList;
-  
+
   // Constructor
   Team(float x, float y) { // Maybe no parameters here?
 
@@ -30,7 +30,8 @@ class Team {
 
     white = color(255);
     black = color(0);
-    grey = color(225);
+    grey = int(215);
+    constrain(grey, 225, 255);
   }
 
   // Methods
@@ -45,28 +46,32 @@ class Team {
     rect(x, y, boxWidth, boxHeight);
 
     // Group color indicator
-    float groupColorIndicator = boxWidth * .035;
+    float groupColorIndicatorWidth = boxWidth * .035;
+    float groupColorIndicatorX = x + (boxWidth - groupColorIndicatorWidth);
 
     rectMode(CORNER);
     noStroke();
     fill(groupColor);
-    rect(x + (boxWidth - groupColorIndicator), y, groupColorIndicator, boxHeight);
+    rect(groupColorIndicatorX, y, groupColorIndicatorWidth, boxHeight);
   }
 
   // Create team flag and name
-  void teamInfo(float x, float y, int teamName, int teamFlag) {
+  void teamInfo(float x, float y, int team) {
 
     float flagWidth = boxWidth * .175;
     float flagHeight = boxHeight + 1;
 
-    float textX = x + (boxWidth * .175);
+    float textX = x + (boxWidth * .25);
     float textY = y + (boxHeight / 2);
+
+    float shadowX = x + flagWidth;
+    float shadowYBottom = y + boxHeight;
 
     float teamNameSize = height * .07;
 
-    // Array 
+    // Array
     teamNameList = new String[16];
-    
+
     // Group A
     teamNameList[0] = "RUSSIA";
     teamNameList[1] = "SAUDI ARABIA";
@@ -74,7 +79,7 @@ class Team {
     teamNameList[3] = "URUGUAY";
 
     // Group B
-    teamNameList[4] = "PROTUGAL";
+    teamNameList[4] = "PORTUGAL";
     teamNameList[5] = "SPAIN";
     teamNameList[6] = "MOROCCO";
     teamNameList[7] = "IRAN";
@@ -116,49 +121,35 @@ class Team {
     teamFlagList[13] = loadImage("icelandFlag.png");
     teamFlagList[14] = loadImage("croatiaFlag.png");
     teamFlagList[15] = loadImage("nigeriaFlag.png");
-  }
-  
-  /*
-  for (int i = 255; i >= 0; i -= 5) {
-   strokeWeight(2);
-   strokeCap(SQUARE);
-   stroke(grey, i);
-   line(x+flagWidth, y, x+flagWidth, y+boxHeight);
-   x_ += 1;
-   grey++;
-   }
-   */
 
-  /*
-  // Create flag shadow
-   void flagShadow(float x, float y) {
-   
-   // Declare and initialize local variables
-   int strokeWidth = 2;
-   
-   for (int i = 255; i >= 0; i -= 5) {
-   
-   // experiment with strokeWeight
-   strokeWeight(strokeWidth);
-   
-   // strokeCap SQUARE to allign with rect
-   strokeCap(SQUARE);
-   
-   // int i as alpha to reduce opacity
-   stroke(grey, i);
-   
-   
-   // x + length of flag img
-   line(x+75, y, x+75, y+h-1); // due to line going over edge
-   
-   // Increment x with value of strokeWidth
-   x += strokeWidth-1; // -1 for no spacing between lines
-   grey++;
-   }
-   }
-   */
+
+    // Display shadow
+    for (int i = 255; i >= 0; i -= 5) {
+      strokeWeight(2);
+      strokeCap(SQUARE);
+      stroke(grey, i);
+      line(shadowX, y, shadowX, shadowYBottom);
+      shadowX += 1;
+      grey++;
+    }
+
+
+    // Display flag
+    image(teamFlagList[team], x, y, flagWidth, flagHeight);
+
+
+    // Display text
+    textAlign(LEFT, CENTER);
+    textSize(teamNameSize);
+    fill(0);
+    text(teamNameList[team], textX, textY);
+  }
+
+
 
   // Display flag, shadow and name inside box
-  void display() {
+  void displayTeam(float x, float y, int groupColor, int team) {
+    teamBox(x, y, groupColor);
+    teamInfo(x, y, team);
   }
 }
